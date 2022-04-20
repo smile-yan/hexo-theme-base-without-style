@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Smileyan</title>
-</head>
+<%- partial('_partial/header') %> 
  
 <body>
-    <!-- 网站名 -->
-    <h1>
-        <a href="/"><%= config.title  %></a> |
-        <a href="/">Home</a> | 
-        <a href="<%-url_for(config.archive_dir)%>">Archive</a> | 
-        <a href="/about/">About</a>
-    </h1>
-    <%- body %> 
+    <!-- 导航栏 -->
+    <%- partial('_partial/nav') %>
 
-    <h3>categories</h3>
-    <ul>
-        <% site.categories.each(category=>{ %>
-            <li>
-                <a href="<%- url_for(category.path) %>">
-                    <%- category.name  %> 
-                </a>
-            </li>
-        <% }) %>
-    </ul>
+    <main class="container">
+        <div class="row pt-3">
+            <!-- 文章 -->
+            <div class="col-8">
+                <%- body %> 
+                <!-- 分页 -->
 
-    <h3>tags</h3>
-    <ul>
-        <% site.tags.each(tag=>{ %>
-            <li>
-                <a href="<%- url_for(tag.path) %>">
-                    <%- tag.name  %> 
-                </a>
-            </li>
-        <% }) %>
-    </ul>
-
+            </div>
     
-
-</body>
- 
+            <!-- sidebar -->
+            <div class="col-4 position-sticky">
+                <%- partial('_partial/sidebar')  %> 
+            </div>
+        </div>
+    </main>
+    
+    
+<!-- footer -->
+<%- partial('_partial/footer')  %> 
+</body> 
 </html>
 
 

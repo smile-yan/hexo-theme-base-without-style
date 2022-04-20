@@ -1,16 +1,40 @@
 <!-- 主页 -->
-<ul>
-<% page.posts.each(post=>{ %>
-    <li>
-        <a href="<%=url_for(post.path)%>">
-            <%= post.title %>
-        </a>
-        | <%- date( post.date , 'YYYY/MM/DD HH:mm') %> 
-    </li>
-<% }) %>
-</ul>
 
-<%- paginator({
-    prev_text: '<',
-    next_text: '>'
-}) %>
+<% page.posts.each(post=> { %>
+    <div class="pb-4 pt-4 tag-hover">
+        <h2 class="tag-hover">
+            <a href="<%- url_for(post.path) %>" class="link-dark text-decoration-none">
+                <%- post.title  %> 
+            </a>
+        </h2>
+        <div class="tag-hover">
+            <i class="fa fa-calendar"> </i> <small> <%- date( post.date , 'YYYY/MM/DD HH:mm') %> </small>
+            <i class="fa fa-folder-open"> </i> 
+                <% post.categories.each(category=>{ %>
+                    <a href="<%- url_for(category.path)  %> " class="link-dark text-decoration-none"> 
+                        <%- category.name  %> 
+                    </a>
+                <% }) %> 
+                
+            <i class="fa fa-tag"> </i> <a href="#" class="link-dark text-decoration-none"> <small>
+                <% post.tags.each(tag=>{ %>
+                    <a href="<%- url_for(tag.path) %>" class="link-dark text-decoration-none"> 
+                        <%- tag.name  %> 
+                    </a>
+                <% }) %> 
+            </small>
+        </a>
+        </div>
+        <div class="pt-3 pe-4">
+            <%- post.content %> 
+        </div>
+        <div class="p-2 pe-4">
+            <a href="<%- url_for(post.path) %>" class="btn btn-outline-secondary btn-sm float-end" type="button">
+                阅读全文 <i class="fa fa-angle-double-right"></i>
+            </a>
+        </div>
+    </div>
+<% }) %> 
+
+
+<%- partial('_partial/paginator') %> 
