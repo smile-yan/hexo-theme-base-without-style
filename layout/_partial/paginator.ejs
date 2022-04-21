@@ -9,12 +9,11 @@ function getLiClass(num) {
 
 function getLiLink(num) {
     if (num == 1) {
-        return ''
+        return page.base 
     }
-
-    return config.pagination_dir+'/'+i+'/'
+    // 适用于主页与归档
+    return page.base + '/' + config.pagination_dir+'/'+i+'/'
 }
-
 
 %> 
 
