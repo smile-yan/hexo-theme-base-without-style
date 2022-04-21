@@ -1,46 +1,14 @@
-<% 
-
-function getLiClass(num) {
-    if (num == page.current) {
-        return 'page-item active'
-    }
-    return 'page-item'
-}
-
-function getLiLink(num) {
-    if (num == 1) {
-        return page.base 
-    }
-    // 适用于主页与归档
-    return page.base + '/' + config.pagination_dir+'/'+i+'/'
-}
-
-%> 
 
 <nav class="pt-3 border-top mt-4">
-    <ul class="pagination justify-content-center">
-        <% if (page.prev > 0) { %> 
-        <li class="page-item">
-            <a class="page-link link-dark" href="<%- url_for(page.prev_link) %> " aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <% } %>
-       
-        <% for (var i=1; i <= page.total; i++) { %> 
-            <li class="<%- getLiClass(i) %>">
-                <a class="page-link link-dark" href="<%- url_for(getLiLink(i))  %>">
-                    <%- i %> 
-                </a>
-            </li>
-        <% } %> 
-        <% if (page.next > 0) { %> 
-        <li class="page-item">
-            <a class="page-link link-dark" href="<%- url_for(page.next_link) %> " aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-        <% } %> 
+    <ul class="pagination justify-content-center new-pagination">
+        <%- paginator(
+            {
+                prev_text: '<i class="fa fa-angle-double-left"></i>',
+                next_text: '<i class="fa fa-angle-double-right"></i>',
+                escape: false
+            }
+        ) %>
     </ul>
 </nav>
+
 

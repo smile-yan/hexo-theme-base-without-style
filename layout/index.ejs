@@ -1,5 +1,29 @@
 <!-- 主页 -->
 
+<% 
+    function generateExcerpt(post) {
+        var paragraph = theme.post_excerpt_paragraph
+        var max_excerpt_words = theme.max_excerpt_words
+        var br = 0
+        for (var i = 0; i < paragraph; i++) {
+            br = post.content.indexOf('\n',br+1)
+            if (br<0) {
+                break
+            } 
+        }
+        if (br<0) {
+            return ""
+        }
+
+        if (post.content.substring(0, br).length > max_excerpt_words) {
+            return post.content.substring(0, max_excerpt_words)
+        }
+
+        return post.content.substring(0, br)
+    }
+
+%> 
+
 <% page.posts.each(post=> { %>
     <div class="pb-4 pt-4 tag-hover">
         <h2 class="tag-hover">
@@ -26,7 +50,12 @@
         </a>
         </div>
         <div class="pt-3 pe-4">
-            <%- post.content %> 
+            <!-- 如果有摘要则显示摘要，没有就自己截取 -->
+            <% if (post.excerpt) { %>
+                <%- post.excerpt  %> 
+            <% } else { %>
+                <%- generateExcerpt(post)  %> 
+            <% } %> 
         </div>
         <div class="p-2 pe-4">
             <a href="<%- url_for(post.path) %>" class="btn btn-outline-secondary btn-sm float-end" type="button">
@@ -38,3 +67,4 @@
 
 
 <%- partial('_partial/paginator') %> 
+

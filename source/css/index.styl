@@ -7,3 +7,35 @@
 .page-item.active .page-link
     background: #777777;
     border: none;
+
+.new-pagination > *
+    border: 1px solid;
+    border-color: #ccc;
+    padding: 5px 10px;
+    margin: 0px;
+
+
+.page-number:first-child,
+.new-pagination .extend:first-child
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+
+.page-number:last-child
+.new-pagination .extend:last-child
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-right: 1px solid;
+    border-color: #ccc;   
+
+
+.new-pagination > a
+    text-decoration: none;
+    color: #555;
+    border-right: none;
+
+
+.new-pagination .current
+    background: #777777;
+    border: 1px solid;
+    border-color: #777777; 
+    color: #fff;

@@ -11,6 +11,10 @@ search:
   enable: true  # 是否使用搜索功能
   placehold: 搜索
 
+post_excerpt_paragraph: 1
+max_excerpt_words: 150
+
+
 menu_right:
   - title: 关于
     path: /about
