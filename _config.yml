@@ -39,11 +39,11 @@ widgets_links:
 # rule 递增或递减
 widgets_default_show:
   category:
-    length: 5
+    length: 10
     sort_by: length # length | name
     rule: desc      # desc | asc
   tag: 
-    length: 5
+    length: 10
     sort_by: name   # length | name
     rule: desc      # desc | asc
   recent:
