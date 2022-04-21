@@ -1,18 +1,26 @@
 <!-- 博客详情 -->
-<% console.log(page) %> 
-
 <h2><%- page.title %></h2>
 <p><%- date(page.date , 'YYYY/MM/DD HH:mm:ss') %> </p>
 <%- page.content  %> 
 
-<h5>
-    <a href="<%- url_for(page.prev.path) %>">
-        < 上一篇：<%- page.prev.title  %>
-    </a>
-</h5>
 
-<h5>
-    <a href="<%- url_for(page.next.path) %>">
-        下一篇：<%- page.next.title  %> >
-     </a>
-</h5>
+<div class="p-2 pe-4">
+  
+
+    <% if (page.prev) { %> 
+        <a href="<%- url_for(page.prev.path)  %>" class="btn btn-outline-secondary btn-sm float-start">
+            <small>
+                < 上一篇：<%- page.prev.title  %>
+            </small>
+        </a>
+    <% } %> 
+
+
+    <% if (page.next) { %> 
+        <a href="<%- url_for(page.next.path)%>" class="btn btn-outline-secondary btn-sm float-end" %>>
+            <small>
+                < 上一篇：<%- page.next.title  %>
+            </small>
+        </a>
+    <% } %> 
+</div>
