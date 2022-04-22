@@ -9,7 +9,7 @@ menu_left:
 
 search: 
   enable: true  # 是否使用搜索功能
-  placehold: 搜索
+  placeholder: 搜索
 
 post_excerpt_paragraph: 1
 max_excerpt_words: 150
